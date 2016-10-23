@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>多级菜单</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul,ol{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        #menu li{
+            <!-- # id 选择器  -->
+            float:left;         <!-- 实验用    menu>li(ie6 不好使)   第一级  menu li  下面所有li -->
+        }
+        .main-menu{
+            <!-- .类选择器 -->
+            float:left;
+            height:100px;
+            width: 30px;
+            background:grey;
+            margin: 5px;
+        }
+        #menu .main-menu a{
+            width:100%;
+            height:100%;
+            display: block;
+            text-align: center;
+            line-height: 50px;
+        }
+
+        #menu.sub-menu{
+            background:lightgrey;
+            display:none;
+        }
+        <!-- 选择器权重值： id 100 class 10 tag 1 -->
+        #menu.sub-menu li{
+            border-bottom: 1px #ff0000;
+            line-height: 30px;
+            background: sandybrown;
+            text-indent:5px;
+
+        }
+
+
+        </style>
+</head>
+<body>
+<ul id="menu">
+    <li class="main-menu">
+    <a href="#">link1</a>
+    <ul class="sub-menu">
+        <li><a href="#">sublink1</a></li>
+        <li><a href="#">sublink2</a></li>
+        <li><a href="#">sublink3</a></li>
+    </ul>
+    </li>
+    <li>
+        <a href="#">link2</a>
+        <ul class="sub-menu>
+            <li><a href="#">sublink1</a></li>
+            <li><a href="#">sublink2</a></li>
+            <li><a href="#">sublink3</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#">link3</a>
+        <ul class="sub-menu>
+            <li><a href="#">sublink1</a></li>
+            <li><a href="#">sublink2</a></li>
+            <li><a href="#">sublink3</a></li>
+        </ul>
+    </li>
+
+
+</body>
+</html>

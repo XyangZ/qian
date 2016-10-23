@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="keywords" content="关键字  例如百度搜索  牛仔裤 裤子">
+    <meta name="description" content="网页简介" />
+    <title>1015第一次下午</title>
+    <style>                                                     /*内部*/
+        a{/*标签选择器   元素选择器*/
+
+            text-decoration:none;          /*下划线*/
+            background: red;
+            display:block;
+            float:left;
+
+                /*a  左浮动  b 就成了第一个元素     浮动元素空间释放*/
+
+        }
+    #a{
+        background:black;
+    }
+    #b{
+        background:greenyellow;
+        clear:left;/*清楚左浮动   则  1   浮动 2  也不动    clear 清除样式    clear   left right both
+         行级元素浮动后 可设置宽和高*/
+    }
+    #c{
+        background:blueviolet;
+    }
+
+/*菜单用列表做*/
+
+        h2{
+            background-color: greenyellow;
+            width:120px;
+            height:80px;
+            display:none;/*不显示*/
+            display:inline;/*显示为行级元素（块级元素变成行级元素）*/
+            display:block;/*现实为块级元素（行级元素变成块级元素）*/
+        }
+        div{
+                padding:10px/*长*/ 20px/*宽*/;
+            text-align: center;/*对齐方式  水平剧终*/
+            line-height:xx px ;   /*单行文字  垂直居中    xx 设置为前面 框的 height*/
+        }
+
+
+    </style>
+    <link rel="styleshet"" href="a_css.css">   <!-- 外部 -->
+</head>
+<body>
+    <!--标题字体大小-->
+    <h1 style="background-color:red">h1</h1>
+    <h2>h2</h2>
+    <h3>h3</h3>
+    <h4>h4</h4>
+    <h5>h5</h5>
+    <h6>h6</h6>
+
+    <a herf="http://www.taobao.com" id="a">某宝</a> <!--超链接-->
+    <a herf="http://www.baidu.com" id="b">某度</a>  <!--超链接-->
+    <a herf="http://www.yahoo.com" id="c">某虎</a>  <!--超链接-->
+
+    <table border="1">  <!--表格布局-->
+        <tr>
+            <td>1</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+
+    <div>div+css</div>
+        <ol>            <!--ol  有序列表里面必须li-->
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+        </ol>
+        <ul>            <!--ul  无序列表-->
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+            <
+        </ul>
+
+                <!--不换行都在同一行,  行级元素 并列-->
+        <a herf="">a</a>
+        <a herf="">b</a>
+        <a herf="">c</a>
+
+
+
+
+        <!--
+            块级元素 block 能设置 行和高
+            行级元素 inline 不能设置行和高
+            内联 <h1 backgroundcolor>
+            内部样式 style
+            外部样式 外链css
+        -->
+
+        <!--盒子 模型-->
+
+
+
+
+
+
+
+
+</body>
+</html>

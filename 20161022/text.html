@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+       *{
+           margin:0;
+           padding:0;
+       }
+       ul {
+           list-style: none;
+       }
+       a{
+           display: block;
+           text-decoration: none;
+           text-align: center;
+       }
+
+        .main{
+            background-color: grey;
+            float:left;
+            height:20px;
+            width:90px;
+            margin:5px;
+        }
+
+        .sub li{
+            background: lightgrey;
+            height:20px;
+            width:90px;
+
+            border-bottom: 1px dashed red;
+        }
+        .sub li a{
+            text-align: left;
+            /*line-height:30px;*/
+            text-indent:5px;
+        }
+        .sub{
+            display:none;
+
+
+        }
+
+    </style>
+</head>
+<body>
+<ul id="menu">
+    <li class="main">
+    <a href="link1.html">link1</a>
+    <ul class="sub">
+        <li><a href="link1-1.html">sublink1.1</a></li>
+        <li><a href="link1-2.html">sublink1.2</a></li>
+        <li><a href="link1-3.html">sublink1.3</a></li>
+        </ul>
+    </li>
+    <li class="main">
+        <a href="link2.html">link2</a>
+        <ul class="sub">
+            <li><a href="link2-1.html">sublink2.1</a></li>
+            <li><a href="link2-2.html">sublink2.2</a></li>
+            <li><a href="link2-3.html">sublink2.3</a></li>
+        </ul>
+    </li>
+    <li class="main">
+        <a href="link3.html">link3</a>
+        <ul class="sub">
+            <li><a href="link1-1.html">sublink3.1</a></li>
+            <li><a href="link1-2.html">sublink3.2</a></li>
+            <li><a href="link1-3.html">sublink3.3</a></li>
+        </ul>
+    </li>
+
+</ul>
+
+
+<script>
+    var oUl=document.getElementById("menu");   /*通过id获取*/
+    var aLi=oUl.getElementsByTagName("li")/*通过标签获取*/
+    for(var i=0;i<aLi.length;i++){
+        if(aLi[i].className=="main"){
+            aLi[i].onmouseover=function(){
+                this.getElementsByTagName("ul")[0].style.display="block";
+            }
+            aLi[i].onmouseout=function(){
+                this.getElementsByTagName("ul")[0].style.display="none";
+            }
+
+        }
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
