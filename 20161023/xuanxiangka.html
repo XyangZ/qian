@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        ul,ol{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        #container{
+            width: 400px;
+            height: 300px;
+            margin: 100px auto;
+            border: 1px solid slateblue;
+        }
+        #tab{
+            height:30px;
+        }
+        #tab li{
+            background-color: black;
+            float:left;
+            line-height: 30px;
+            cursor:pointer;
+
+        }
+        #tab .selected{
+
+        }
+
+        #content{
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <ul id="tab">
+        <li class="selected">html</li>
+        <li>js</li>
+        <li>css</li>
+    </ul>
+    <div id="content">1111</div>
+    <div class="selected">001</div>         <!--style  设置隐藏   display=“none”-->
+    <div>002</div>
+    <div>003</div>
+</div>
+</body>
+</html>
+<!--
+ margin:0;  块级元素水平居中}
+文字居中 设置line—height等于框高度 就居中了
+cursor:pointer       控制鼠标 可以鼠标变手掌
+塌陷问题 固定高度或者overflow:hidden;
+
+
+
+《javascript高级程序设计 ：第三版 》红皮书
+《javascript DOM 编程艺术》   封皮犀牛
+《javascript权威指南》
+
+js循环
+for（i）
+    ｛
+        for（i）{
+            //初始化  tab  等于 ‘’         none
+            ali[i].classname='';
+            //再初始化 下面配对div
+            aDiv[i].classname='';
+        }
+        this.classname=selected;
+        aDiv[i].classname="selected"
+     ｝
+
+
+
+console.log("");
+
+
+next 在IE 中  下一个 div元素
+谷歌  等  下一个文本节点
+-->

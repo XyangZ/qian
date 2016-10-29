@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            display: block;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .main {
+            background-color: grey;
+            float: left;
+            height: 20px;
+            width: 90px;
+            margin: 5px;
+        }
+
+        .sub li {
+            background: lightgrey;
+            height: 20px;
+            width: 90px;
+
+            border-bottom: 1px dashed red;
+        }
+
+        .sub li a {
+            text-align: left;
+            /*line-height:30px;*/
+            text-indent: 5px;
+        }
+
+        .sub {
+            display: none;
+
+        }
+
+    </style>
+</head>
+<body>
+<ul id="menu">
+    <li class="main">
+        <a href="link1.html">link1</a>
+        <ul class="sub">
+            <li><a href="link1-1.html">sublink1.1</a></li>
+            <li><a href="link1-2.html">sublink1.2</a></li>
+            <li><a href="link1-3.html">sublink1.3</a></li>
+        </ul>
+    </li>
+    <li class="main">
+        <a href="link2.html">link2</a>
+        <ul class="sub">
+            <li><a href="link2-1.html">sublink2.1</a></li>
+            <li><a href="link2-2.html">sublink2.2</a></li>
+            <li><a href="link2-3.html">sublink2.3</a></li>
+        </ul>
+    </li>
+    <li class="main">
+        <a href="link3.html">link3</a>
+        <ul class="sub">
+            <li><a href="link1-1.html">sublink3.1</a></li>
+            <li><a href="link1-2.html">sublink3.2</a></li>
+            <li><a href="link1-3.html">sublink3.3</a></li>
+        </ul>
+    </li>
+
+</ul>
+
+
+<script>
+    var oUl = document.getElementById("menu");
+    /*通过id获取*/
+    var aLi = oUl.getElementsByTagName("li")
+    /*通过标签获取*/
+    for (var i = 0; i < aLi.length; i++) {
+        if (aLi[i].className == "main") {
+            aLi[i].onmouseover = function () {
+                var osubMenu = this.children[1];
+                osubMenu.style.display = "block";
+            }
+            aLi[i].onmouseout = function () {
+                var osubMenu = this.children[1];
+                osubMenu.style.display = "none";
+            }
+        /*
+        aH3=index
+
+
+
+
+         */
+
+        }
+    }
+</script>
+
+
+</body>
+</html>
+<!--  a 里不能加 block 元素  -->
+<!-- :hover 伪类元素 -->
+<!--
+js 基本类型
+    1.基本类型：number   string    bollean    underfined  null
+    2.引用类型（对象类型）
+
+js对象有三种
+1.内置对象
+2.自定义对象
+3.DOM对象 （document object model ，文档对象模型）
+
+script  对象 o开头  eg    var oUl
+
+class   classname       for   htmlFor         JS关键字保留  后面用时候改名
+
+.children 上面 调用  所有子元素
+
+this 操纵谁就是谁
+
+this.nextsibling    兄弟元素                  IE8以前版本 能直接找 元素节点  IE8以后能找到空格回车字母等节点
+this.nextElementSibling   下一个标签兄弟元素   IE8以后版本 能直接找 元素节点
+所以一般找父节点
+this.parentNode.children[1].style.display="block";
+this.parentNode.childNode.style.display="block";//标准语法  能找到文本
+
+也可以 自定义函数
+function next(elem){
+        do{
+            elem = elem.nextSibling;
+        }while(elem && elem.nodeType != 1);
+        return elem;
+
+
+
+
+ctrl  alt  l   自动规范格式
+
+node节点
+nodeType:
+    1.元素节点  （标签）<>
+    2.文本节点    空格回车文字
+
+一个布尔型变量只能解决一个菜单
+
+s: 表示字符串String
+i: 表示整型Int(它是Number中的整数类型)
+fl: 表示浮点Float(它是Number中的小数类型)
+b: 表示布尔Boolean
+a: 表示数组Array
+o: 表示对象Object
+fn: 不示函数Function
+re: 表示正则Regular Expression
+
+
+-->

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul, ol {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        #container {
+            position: absolute;
+            left: 500px;
+            top: 300px;
+            width: 680px;
+            height: 344px;
+            background-color: red;
+        }
+
+        #tab {
+            position: absolute;
+            right: 10px;
+            bottom: 30px;
+            z-index: 1; /*优先级设置,定位的元素比没定位的层级高*/
+        }
+
+        #tab li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+            color: white;
+            background-color: black;
+            text-align: center;
+            line-height: 20px;
+            cursor: pointer; /*鼠标样式*/
+        }
+        #tab li.selected{
+            background-color: white;
+            color:black;
+        }
+
+        #arrow {
+            position: absolute;
+            left: 10px;
+            bottom: 30px;
+        }
+
+        #arrow span {
+            width: 20px;
+            height: 20px;
+            float: left;
+            color: white;
+            background-color: black;
+            margin-right: 5px;
+            text-align: center;
+            line-height: 20px;
+            cursor: pointer; /*鼠标样式*/
+        }
+
+        #content img {
+            display: none;
+        }
+
+        #content img.selected {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <ul id="tab">
+        <li class="selected">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <div id="content">
+        <img src="img/1.jpg" class="selected"/>
+        <img src="img/2.jpg"/>
+        <img src="img/3.jpg"/>
+        <img src="img/4.jpg"/>
+    </div>
+    <div id="arrow">
+        <span id="last">&lt;</span>
+        <span id="next">&gt;</span>
+    </div>
+</div>
+<script>
+    var oDiv = document.getElementById('container');
+    var aLi = oDiv.getElementsByTagName('li');
+    var aImg = oDiv.getElementsByTagName('img');
+    var oNext = document.getElementById('next');
+    var oLast = document.getElementById('last');
+    var iNow = 0;
+    for (var i = 0; i < aLi.length; i++) {
+        aLi[i].index = i;
+        aLi[i].onmouseover = function () {
+            changeImg(this.index)
+        }
+
+    }
+    function changeImg(index) {
+
+        for (var i = 0; i < aLi.length; i++) {
+            aLi[i].className = '';
+            aImg[i].className = '';
+        }
+        iNow = index;
+        aLi[index].className = 'selected';
+        aImg[index].className = 'selected';
+
+    }
+    oNext.onclick = function () {
+
+        iNow++;
+        iNow = iNow % 4;
+        changeImg(iNow);
+    }
+
+    oLast.onclick = function () {
+        --iNow;
+        iNow = (iNow+4) % 4;
+        ;
+        changeImg(iNow);
+    }
+</script>
+<!--  s: 表示字符串String
+   i: 表示整型Int(它是Number中的整数类型)
+   fl: 表示浮点Float(它是Number中的小数类型)
+   b: 表示布尔Boolean
+   a: 表示数组Array
+   o: 表示对象Object
+   fn: 不示函数Function
+   re: 表示正则Regular
+ -->
+
+</body>
+</html>

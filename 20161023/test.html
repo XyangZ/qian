@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content=""/>
+    <meta name="keywords" content="">
+    <meta name="Description" content="">
+    <title> new document </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        ul li {
+            float: left;
+            width: 50px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+        }
+
+        ul li:hover {
+            background: #cfcfcf;
+        }
+
+        div {
+            clear: both;
+            width: 200px;
+            height: 100px;
+            border: 1px solid #888;
+            display: none;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            var oUl = document.getElementById('menu'); //获取id为menu的ul元素；
+            var oLi = oUl.getElementsByTagName('li'); //获取oUl下所有的li元素；
+            var oDiv = document.getElementsByTagName('div'); //获取文档中所有的div元素；
+            var i = 0; //声明一个变量i，并赋值为0；
+
+            for (i = 0; i < oLi.length; i++) //设置for循环，变量为i,i小于oLi的长度（就是li标签的个数）
+            {
+                oLi[i].a = i;  //给每个li标签添加一个索引，设置索引值为i；
+                oLi[i].onmouseover = function () { //当鼠标移入到第i个li上时，执行函数；
+                    for (i = 0; i < oLi.length; i++) //用for循环，先将所有的div的display设置为none,即把所有的div隐藏起来；
+                    {
+                        oDiv[i].style.display = 'none';
+                    }
+                    oDiv[this.a].style.display = 'block'; //设置与li索引值相同的第i个div的display为block，即把这个div显示出来；
+                }
+
+            }
+            /*
+             原理分析：
+             这是个简单的选项卡的例子，效果是当鼠标移到111上时，只显示bbb，当移到222时，只显示ccc，依此类推；
+             要实现这个效果，就要通过一种方式将每个Li与每个div一一对应起来，编号当然是最简单方便的，如果给每
+             个li和每个div都编上号码1234...,这样当移动到li1时，对应显示div1，依此类推，就可实现效果了。
+             变量注解：
+             oLi和oDiv获取到的都是一个数组，这个是一定要理解清楚的，通俗点说，数组里的每一个值都有一个默认的
+             编号，oLi获取到的是四个li，每个Li在里面都有一个编号，同样，oDiv获取到的是四个div，每个div在里面
+             也都有一个编号，数组是从0开始计数的，所以它们分别被标记为oLi[0],oLi[1],oLi[2],oLi[3]；oDiv[0],
+             oDiv[1],oDiv[2],oDiv[3].
+             oLi[0]对应的是<li> 111 </li>, oDiv[0]对应的是<div> aaaa </div>，依此类推。
+             索引说明：
+             oLi[i].a=i,这个是给每个li一个索引标记。
+             for循环每次执行都是从变量初始值（本例变量为i,初始为0）到终止值（本例为3）一次不间断地执行完。
+             本例的索引随着for循环的执行，具体过程为：
+             oLi[0].a=0;
+             oLi[1].a=1;
+             oLi[2].a=2;
+             oLi[3].a=3;
+             oLi[i].onmouseover 这个是事件，只有当鼠标移动上li上，才会被执行。
+             执行过程：
+             1，当页面打开的时候，js会等页面内容全部加载完（这个是由window.onload来控制），然后声明oUl、oLi、oDiv
+             等变量，并获取相应的值；
+             2，for循环执行，为每个li生成索引值；
+             3，当鼠标移动到某个li上，如第2个li上时，触发onmouseover事件,因为js是从上到下顺序执行的，所以先会
+             触发for循环，将所有div的display属性设置为none(即隐藏所有的div)；接下来，因为第二个Li在oLi数组
+             中的位置标记为oLi[1],this就是指当前鼠标移动上去的第二个li。this.a就等于oLi[1].a，根据上面for
+             循环生成的索引标记，oLi[1].a=1,即this.a==1.那么oDiv[this.a]就等于是oDiv[1]，那么接下来执行的
+             oDiv[this.a].style.display='block'即是把oDiv[i]的display属性设置为block(显示)，oDiv[1]是第二个
+             div,正好当然移动到的也是第二个li，这样就实现了移动到li2（<li> 222 </li>）上，对应地显示第二个
+             div（<div> bbbb </div>），其它li同理；
+
+             */
+        }
+    </script>
+</head>
+
+<body>
+<ul id="menu">
+    <li> 111</li>
+    <li> 222</li>
+    <li> 333</li>
+    <li> 444</li>
+</ul>
+<div style="display: block;"> aaaa</div>
+<div> bbbb</div>
+<div> cccc</div>
+<div> dddd</div>
+</body>
+</html>
