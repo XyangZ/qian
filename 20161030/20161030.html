@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #drag {
+            width: 200px;
+            height: 200px;
+            background: #ff0000;
+            cursor: pointer;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div id="drag"></div>
+<script>
+    /*
+     (function () {
+     var oDrag = document.getElementById("drag");
+     oDrag.onmousedown = function (e) {
+     e = e || window.event;//e事件对象，兼容性问题
+     var iDisX = e.clientX - oDrag.offsetLeft;
+     var iDisY = e.clientY - oDrag.offsetTop;
+     document.onmousemove = function (e) {
+     e = e || window.event;
+     var left = e.clientX - iDisX;
+     var top = e.clientY - iDisY;
+     oDrag.style.left = left + "px";
+     oDrag.style.top = top + "px";
+     return false;
+     };
+     };
+     document.onmouseup = function () {
+     document.onmousemove = null;
+     }
+
+     })();
+     */
+
+    /*函数变量写在局部变量里，不会污染全局变量*/
+</script>
+
+
+
+<script>
+    (function () {
+        /*1.鼠标拖着跟着动 2.鼠标松开跟着停 3.范围内活动*/
+        var oDrag = document.getElementById('drag');
+        oDrag.onmousedown = function (e) {
+            e = e || window.event;
+            var iDisX = e.clientX - oDrag.offsetLeft;
+            var iDisY = e.clientY - oDrag.offsetTop;
+
+            oDrag.onmousemove = function (e) {
+                e = e || window.event;
+                var left = e.clientX - iDisX;
+                var top = e.clientY - iDisY;
+                oDrag.style.left = left + "px";
+                oDrag.style.top = top + "px";
+                return false;
+
+            };
+        };
+
+        document.onmouseout = function (e) {
+            document.onmousemove = null;
+        }
+    })();
+</script>
+
+
+<!--
+//函数立即调用,不污染全局变量
+固定定位在IE 有兼容性问题
+
+-->
+
+
+</body>
+</html>
+<!--
+块级元素    block
+行级元素    inline
+
+
+
+选择器
+1.标签/元素选择器
+2.id选择器     #id
+3.类选择器     .class
+4.后代选择器   div p{}     权重值可以叠加，但是只要有id，id最大，
+5.子代选择器   div>p{}
+6.伪类选择器   hover鼠标放上的 link未访问 visited访问过得 active选中的
+7.分组选择器   div,p{}  ul,ol{}
+8.兄弟选择器
+9.属性选择器   a[target/*设置新页面打开还是原页面打开 超链接属性*/]{}
+
+权重值     id:100 class:10 tag:1
+
+盒模型
+
+
+  display:inline-block
+   console.log()
+
+
+   undefined未定义  null变量不存在       区别  3点
+   值相等
+
+
+   事件三要素  事件源 事件函数 事件处理对象
+-->

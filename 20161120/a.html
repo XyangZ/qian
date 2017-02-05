@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul, ol {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        #container {
+            width: 680px;
+            margin: 0 auto;
+        }
+
+        #container img {
+            width: 200px;
+            height: 150px;
+            float: left;
+            margin: 10px;
+        }
+
+        #container img.collide {
+            border: 1px solid #f00;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <img src="images/1.jpg"/>
+    <img src="images/2.jpg"/>
+    <img src="images/3.jpg"/>
+    <img src="images/4.jpg"/>
+    <img src="images/5.jpg"/>
+    <img src="images/6.jpg"/>
+    <img src="images/7.jpg"/>
+    <img src="images/8.jpg"/>
+    <img src="images/9.jpg"/>
+</div>
+<script>
+    var oContainer = document.getElementById('container');
+    var aImg = oContainer.getElementsByTagName('img');
+    var zIndex = 1;
+    var collide = [];
+    var nearElem = null;
+
+    for (var i = aImg.length - 1; i >= 0; i--) {
+        aImg[i].style.left = aImg[i].style.offsetLeft + "px";
+        aImg[i].style.top = aImg[i].style.offsetTop + "px";
+        aImg[i].position = 'absolute';
+        drag(aImg[i]);
+    }
+    function drag(elem) {
+        elem.onmousedown=function(e){
+            e=e||window.event
+        }
+    }
+
+</script>
+</body>
+</html>

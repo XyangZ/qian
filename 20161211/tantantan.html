@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: auto;
+            padding: 0;
+        }
+
+        ul, ol {
+            list-style: none;
+        }
+
+        #container {
+            width: 680px;
+            height: 340px;
+            margin: 50px auto;
+            position: relative;
+            -webkit-perspective: 800px;
+        }
+
+        #images img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            -webkit-transform: rotateX(180deg);
+            -webkit-transform-origin: bottom;
+            opacity: 0;
+        }
+
+        #images .show {
+            -webkit-animation: show 1s ease forwards;
+        }
+
+        #images .hide {
+            -webkit-animation: hide 1s ease forwards;
+        }
+
+        @-webkit-keyframes show {
+            0% {
+            }
+            100% {
+                -webkit-transform: rotateX(0deg);
+                opacity: 1;
+            }
+        }
+
+        @-webkit-keyframes hide {
+            from {
+                -webkit-transform: rotatex(0deg);
+                opacity: 1;
+            }
+            to {
+                -webkit-transform: rotateX(-180deg);
+                opacity: 0;
+            }
+        }
+
+        #container span {
+            height: 50px;
+            width: 50px;
+            font-size: 40px;
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            margin-top: -25px;
+
+        }
+
+        #pre {
+            left: -100px;
+        }
+
+        #nex {
+            right: -100px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="container">
+    <ul id="images">
+        <li><img class="show" src="img/img/1.jpg" alt=""/></li>
+        <li><img src="img/img/2.jpg" alt=""/></li>
+        <li><img src="img/img/3.jpg" alt=""/></li>
+        <li><img src="img/img/4.jpg" alt=""/></li>
+    </ul>
+    <span id="pre">&lt;</span>
+    <span id="nex">&gt;</span>
+</div>
+<script>
+    var oContainer = document.getElementById('container');
+    var aImg = document.getElementsByTagName('img');
+    var oNext = document.getElementById('nex');
+    var oPrev = document.getElementById('pre');
+    var iNow = 0;
+    oNext.onclick = function(){
+        aImg[iNow].className = 'hide';
+        iNow++;
+        if(iNow == aImg.length){
+            iNow = 0;
+        }
+        aImg[iNow].className = 'show';
+    }
+
+    oPrev.onclick = function(){
+        aImg[iNow].className = 'hide';
+        iNow--;
+        if(iNow == -1){
+            iNow = aImg.length - 1;
+        }
+        aImg[iNow].className = 'show';
+    }
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

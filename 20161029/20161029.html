@@ -19,11 +19,14 @@
 
         #container {
             position: absolute;
-            left: 500px;
+            left: 50px;
+            /*left: 500px;*/
             top: 300px;
-            width: 680px;
+            /*width: 680px;*/
+            width: 1300px;
             height: 344px;
             background-color: red;
+
         }
 
         #tab {
@@ -44,9 +47,10 @@
             line-height: 20px;
             cursor: pointer; /*鼠标样式*/
         }
-        #tab li.selected{
+
+        #tab li.selected {
             background-color: white;
-            color:black;
+            color: black;
         }
 
         #arrow {
@@ -65,6 +69,11 @@
             text-align: center;
             line-height: 20px;
             cursor: pointer; /*鼠标样式*/
+        }
+
+        #content {
+            position: absolute;
+            left: 0px;
         }
 
         #content img {
@@ -96,42 +105,119 @@
     </div>
 </div>
 <script>
-    var oDiv = document.getElementById('container');
-    var aLi = oDiv.getElementsByTagName('li');
-    var aImg = oDiv.getElementsByTagName('img');
-    var oNext = document.getElementById('next');
-    var oLast = document.getElementById('last');
-    var iNow = 0;
-    for (var i = 0; i < aLi.length; i++) {
-        aLi[i].index = i;
-        aLi[i].onmouseover = function () {
-            changeImg(this.index)
-        }
+    window.onload = function{
 
-    }
-    function changeImg(index) {
 
+        /*for (var i = 0; i < aLi.length; i++) {
+         aLi[i].index = i;
+         aLi[i].onmouseover = function () {
+         changeImg(this.index)
+         }
+
+         }
+         function changeImg(index) {
+
+         for (var i = 0; i < aLi.length; i++) {
+         aLi[i].className = '';
+         aImg[i].className = '';
+         }
+         iNow = index;
+         aLi[index].className = 'selected';
+         aImg[index].className = 'selected';
+
+         }*/
+
+
+        /*oNext.onclick = function () {
+
+         iNow++;
+         iNow = iNow % aLi.length;
+         changeImg(iNow);
+         }
+
+
+         oLast.onclick = function () {
+         --iNow;
+         iNow = (iNow + aLi.length) % aLi.length;
+
+         changeImg(iNow);
+
+         }
+         timer = setInterval(function () {
+         oNext.onclick();
+         }, 2700);
+
+         oDiv.onmouseover = function () {
+         clearInterval(timer);
+         }
+
+
+         oDiv.onmouseout = function () {
+         timer = setInterval(function () {
+         oNext.onclick();
+         }, 2700);
+         }*/
+        var oContainer = document.getElementById('container');
+        var oTab = document.getElementById('tab');
+        var aLi = oTab.children;
+        var oContent = document.getElementById('content');
+        var aImg = oContent.children;
+        var oPrev = document.getElementById('prev');
+        var oNext = document.getElementById('next');
+        var timer;
+        var index = 0;//代表当前正在显示的图片的索引
+
+        oContent.style.width = aImg.length * aImg[0].offsetWidth + 'px';
         for (var i = 0; i < aLi.length; i++) {
-            aLi[i].className = '';
-            aImg[i].className = '';
+            aLi[i].index = i;
+            index = i;
+            aLi[i].onmouseover = function () {
+                index = this.index;
+                changeImg(this.index);
+            };
+
+            aImg[i].style.zIndex = aImg.length - i;
         }
-        iNow = index;
-        aLi[index].className = 'selected';
-        aImg[index].className = 'selected';
 
-    }
-    oNext.onclick = function () {
+        function changeImg(index) {
+            for (var i = 0; i < aLi.length; i++) {
+                aLi[i].className = '';
+            }
+            // elem.className = 'selected';
+            aLi[index].className = 'selected';
+            animate(oContent, {left: -index * aImg[0].offsetWidth});
+        }
 
-        iNow++;
-        iNow = iNow % 4;
-        changeImg(iNow);
-    }
+        oPrev.onclick = function () {
+            index--;
+            if (index == -1) {
+                index = aLi.length - 1;
+            }
+            changeImg(index);
+        };
+        oNext.onclick = function () {
+            index++;
+            if (index == aLi.length) {
+                index = 0;
+            }
+            changeImg(index);
+        };
+        function run() {
+            timer = setInterval(function () {
+                oNext.onclick();
+            }, 2000);
+        }
 
-    oLast.onclick = function () {
-        --iNow;
-        iNow = (iNow+4) % 4;
-        ;
-        changeImg(iNow);
+        run();
+
+        oContainer.onmouseover = function () {
+            clearInterval(timer);
+        };
+
+        oContainer.onmouseout = function () {
+            run();
+        };
+
     }
 </script>
 <!--  s: 表示字符串String
